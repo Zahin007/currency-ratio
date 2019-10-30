@@ -1,11 +1,14 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
-driver = webdriver.Chrome(executable_path="F:\studies\python\chromedriver_win32\chromedriver")
+#chrome_options = webdriver.ChromeOptions()
+#chrome_options.add_argument('--incognito')
 
-driver.get("https://www.google.com/search?q=ratio+of+bdt+and+irp&oq=ratio+of+bdt+and+irp&aqs=chrome.0.69i59j69i60j69i61.2871j0j7&sourceid=chrome&ie=UTF-8")
 
-ratio = driver.find_elements_by_xpath('//span[@class="data-value"]')
+driver = webdriver.Chrome(executable_path="C:\\Users\\Dumbass\\Downloads\chromedriver_win32\\chromedriver.exe")
+driver.get("https://www.xe.com/currencyconverter/convert/?Amount=1&From=BDT&To=INR")
+
+ratio = driver.find_elements_by_xpath('//span[@class="converterresult-toAmount"]')
 
 
 print(ratio)
