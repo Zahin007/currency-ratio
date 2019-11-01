@@ -1,17 +1,20 @@
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-
-#chrome_options = webdriver.ChromeOptions()
-#chrome_options.add_argument('--incognito')
+from datetime import  datetime
 
 
-driver = webdriver.Chrome(executable_path="C:\\Users\\Dumbass\\Downloads\chromedriver_win32\\chromedriver.exe")
+driver = webdriver.Chrome(executable_path="C:\\Users\\Dumbass\\Downloads\\chromedriver_win32\\chromedriver.exe")
 driver.get("https://www.xe.com/currencyconverter/convert/?Amount=1&From=BDT&To=INR")
 
-ratio = driver.find_elements_by_xpath('//span[@class="converterresult-toAmount"]')
+
+ratio_raw = driver.find_elements_by_xpath('//*[@id="converterResult"]/div/div/div[2]/span[1]')[0]
+ratio = ratio_raw.text
 
 
-print(ratio)
-print(type(ratio))
+now = datetime.now()
+file = open("datasheet.txt","a")
+file.write("\nThe Date & Time : "+str(now))
+file.write("  The Ratio : "+str(ratio))
+
+
 print("prog success")
 driver.close()
